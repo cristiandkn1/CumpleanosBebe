@@ -1,132 +1,124 @@
-/* =========================================================
-   mobile.css — overrides móviles (usar junto a styles.css)
-   ========================================================= */
-
-/* Basales: evita resalte azul, scroll lateral y respeta notch */
-html, body{
-  margin:0; padding:0;
-  height:100%;
-}
-*{
+/*Evitamos el Resaltado Azul de los Moviles*/
+* {
   -webkit-tap-highlight-color: transparent;
   outline: none;
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-}
-body{
-  overflow-x:hidden;                        /* evita bandas laterales */
-  padding-left:  env(safe-area-inset-left); /* notch iOS */
-  padding-right: env(safe-area-inset-right);
+  user-select: none;         /* Evita seleccionar texto al tocar */
+  -webkit-user-select: none; /* Para Safari/iOS */
+  -moz-user-select: none;    /* Firefox */
+  -ms-user-select: none;     /* IE/Edge */
 }
 
-/* El “escenario/mesa” debe ser relativo para anclar el mensaje.
-   Usa el que exista en tu HTML: cualquiera de estos valdrá. */
-.escena, .torta-wrap, .soporte{ position: relative; }
-
-/* ========= Mesa ========= */
-.soporte{
+/* Mesa */
+.soporte {
   width: 370px;
   left: -6px;
 }
-.soporte::before{
+
+.soporte::before {
   width: 100px;
   height: 1000px;
   left: 50%;
   transform: translateX(-50%);
   top: 18px;
 }
-.soporte::after{
+
+.soporte::after {
   width: 95px;
   height: 1000px;
   left: 85px;
 }
 
-/* ========= Mensaje (con salto condicional para móvil) =========
-   HTML:
-   <div class="happy-birthday">
-     Feliz cumpleaños<span class="br-mobile"><br></span> mi amor
-   </div>
-*/
-.br-mobile{ display:none; }
-
-.happy-birthday{
-  position: absolute;
-  top: 0;                      /* se ancla al borde superior del contenedor */
-  left: 50%;
-  transform: translate(-50%, -110%);   /* lo sube por encima de la torta */
-  font-family: 'Pacifico', cursive;
-  font-size: clamp(20px, 7vw, 40px);   /* tamaño fluido */
-  color: #ff4d6d;
-  text-align: center;
-
-  /* envolver y no cortar */
-  white-space: normal;
-  overflow-wrap: anywhere;             /* permite dividir palabras largas */
-  max-width: 92vw;                     /* quepan en pantallas angostas */
-
-  /* respeta notch/bordes */
-  padding-inline: max(8px, env(safe-area-inset-left), env(safe-area-inset-right));
-
-  text-shadow: 2px 2px 4px rgba(0,0,0,.15);
-  animation: flotar 2s ease-in-out infinite, brillo 1.5s infinite;
+/*Mensaje*/
+.happy-birthday {
+  top: -100%;
+  left: 120px;
 }
 
-/* ========= Objetos de la mesa ========= */
-.portaretrato{ transform: scale(0.75); left: 65px;  bottom: -12px; }
-.torta       { transform: scale(0.75); left: 15px;  bottom: -20px; }
-.caja        { transform: scale(0.75); left: -65px; bottom: -26px; }
-.vela        { transform: scale(0.75); bottom: 94px; left: 145px;  }
-.llama       { bottom: 160px; left: 140px; }
-.carta{
-  animation: none;             /* evita mini-zoom */
+/*Objetos de la mesa*/
+.portaretrato {
+  transform: scale(0.75);
+  left: 65px;
+  bottom: -12px;
+}
+
+.torta {
+  transform: scale(0.75);
+  left: 15px;
+  bottom: -20px;
+}
+
+.caja {
+  transform: scale(0.75);
+  left: -65px;
+  bottom: -26px;
+}
+
+.vela {
+  transform: scale(0.75);
+  bottom: 94px;
+  left: 145px;
+}
+
+.llama {
+  bottom: 160px;
+  left: 140px;
+}
+
+.carta {
+  animation: none; /* Evitar mini zoom */
   transform: scale(0.8);
   transform-origin: center center;
-  margin: 0 auto;
+  margin: 0 auto; /* Centrar horizontalmente */
 }
 
-/* ================= Breakpoints ================= */
+/* Nuevo media query para pantallas más pequeñas */
+@media only screen and (max-width: 400px) {
 
-/* Teléfonos muy pequeños (<= 400px) */
-@media (max-width: 400px){
-  .soporte{ width:300px; }
-  .soporte::after{ left:45px; top:20px; }
-
-  .happy-birthday{
-    font-size: clamp(18px, 8vw, 36px);
-    transform: translate(-50%, -120%); /* un poco más arriba */
-    max-width: 90vw;
+  .soporte {
+    width: 300px;
   }
-  .br-mobile{ display:inline; }        /* fuerza el salto de línea */
 
-  .portaretrato{ transform:scale(0.65); left:92px;  bottom:-16px; }
-  .torta       { transform:scale(0.63); left:17px;  bottom:-27px; }
-  .caja        { transform:scale(0.65); left:-100px; bottom:-35px; }
-  .vela        { transform:scale(0.65); bottom:74px; left:160px; }
-  .llama       { bottom:138px; left:157px; }
-  .carta       { transform:scale(0.7); }
-}
-
-/* Teléfonos comunes (401–480px) */
-@media (min-width:401px) and (max-width:480px){
-  .happy-birthday{
-    font-size: clamp(20px, 6.5vw, 40px);
-    transform: translate(-50%, -115%);
+  .soporte::after {
+    left: 45px;
+    top: 20px;
   }
-  .br-mobile{ display:inline; }        /* salto también aquí si lo deseas */
-}
 
-/* Ajuste fino (<=360px) — opcional si aún queda muy arriba */
-@media (max-width:360px){
-  .happy-birthday{
-    transform: translate(-50%, -110%);
-    max-width: 88vw;
+  .happy-birthday {
+    font-size: 36px;
+    top: -100%;
+    left: 130px; 
   }
-}
 
-/* Accesibilidad: no perder foco al navegar con teclado (opcional) */
-*:focus-visible{
-  outline: 2px solid rgba(255,77,109,.6);
-  outline-offset: 2px;
+  .portaretrato {
+    transform: scale(0.65);
+    left: 92px;
+    bottom: -16px;
+  }
+
+  .torta {
+    transform: scale(0.63);
+    left: 17px;
+    bottom: -27px;
+  }
+
+  .caja {
+    transform: scale(0.65);
+    left: -100px;
+    bottom: -35px;
+  }
+
+  .vela {
+    transform: scale(0.65);
+    bottom: 74px;
+    left: 160px;
+  }
+
+  .llama {
+    bottom: 138px;
+    left: 157px;
+  }
+
+  .carta {
+    transform: scale(0.7);
+  }
 }
