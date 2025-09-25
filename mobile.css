@@ -1,19 +1,28 @@
-/*Evitamos el Resaltado Azul de los Moviles*/
+/* ==============================
+   mobile.css — overrides móviles
+   ============================== */
+
+/* Evitamos el resaltado azul en móviles y selección accidental */
 * {
   -webkit-tap-highlight-color: transparent;
   outline: none;
-  user-select: none;         /* Evita seleccionar texto al tocar */
-  -webkit-user-select: none; /* Para Safari/iOS */
-  -moz-user-select: none;    /* Firefox */
-  -ms-user-select: none;     /* IE/Edge */
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
-/* Mesa */
+/* Si tu escena/mesa tiene un contenedor, asegúrate que sea relativo
+   (sirve para posicionar el mensaje por encima de la torta). */
+.escena, .torta-wrap, .soporte { position: relative; }
+
+/* ==============================
+   Mesa
+   ============================== */
 .soporte {
   width: 370px;
   left: -6px;
 }
-
 .soporte::before {
   width: 100px;
   height: 1000px;
@@ -21,72 +30,79 @@
   transform: translateX(-50%);
   top: 18px;
 }
-
 .soporte::after {
   width: 95px;
   height: 1000px;
   left: 85px;
 }
 
-/*Mensaje*/
-.happy-birthday {
-  top: -100%;
-  left: 120px;
+/* ==============================
+   Mensaje: ¡Feliz cumpleaños!
+   — Centramos y evitamos que se corte
+   ============================== */
+.happy-birthday{
+  position: absolute;
+  top: 0;                      /* referencia: borde superior del contenedor */
+  left: 50%;
+  transform: translate(-50%, -110%); /* lo subimos justo encima de la torta */
+  font-family: 'Pacifico', cursive;
+  font-size: clamp(20px, 7vw, 40px); /* tamaño fluido para móviles */
+  color: #ff4d6d;
+  text-align: center;
+  max-width: 92vw;             /* no desbordar en pantallas estrechas */
+  padding: 0 .25rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.15);
+  animation: flotar 2s ease-in-out infinite, brillo 1.5s infinite;
 }
 
-/*Objetos de la mesa*/
+/* ==============================
+   Objetos de la mesa
+   ============================== */
 .portaretrato {
   transform: scale(0.75);
   left: 65px;
   bottom: -12px;
 }
-
 .torta {
   transform: scale(0.75);
   left: 15px;
   bottom: -20px;
 }
-
 .caja {
   transform: scale(0.75);
   left: -65px;
   bottom: -26px;
 }
-
 .vela {
   transform: scale(0.75);
   bottom: 94px;
   left: 145px;
 }
-
 .llama {
   bottom: 160px;
   left: 140px;
 }
-
 .carta {
-  animation: none; /* Evitar mini zoom */
+  animation: none;             /* Evitar mini zoom */
   transform: scale(0.8);
   transform-origin: center center;
-  margin: 0 auto; /* Centrar horizontalmente */
+  margin: 0 auto;              /* Centrar horizontalmente */
 }
 
-/* Nuevo media query para pantallas más pequeñas */
-@media only screen and (max-width: 400px) {
-
-  .soporte {
-    width: 300px;
-  }
-
+/* ===========================================================
+   Breakpoint principal: móviles muy pequeños (<= 400px)
+   =========================================================== */
+@media (max-width: 400px) {
+  .soporte { width: 300px; }
   .soporte::after {
     left: 45px;
     top: 20px;
   }
 
-  .happy-birthday {
-    font-size: 36px;
-    top: -100%;
-    left: 130px; 
+  .happy-birthday{
+    /* un poco más pequeño y ligeramente más arriba */
+    font-size: clamp(18px, 8vw, 36px);
+    transform: translate(-50%, -120%);
   }
 
   .portaretrato {
@@ -94,31 +110,34 @@
     left: 92px;
     bottom: -16px;
   }
-
   .torta {
     transform: scale(0.63);
     left: 17px;
     bottom: -27px;
   }
-
   .caja {
     transform: scale(0.65);
     left: -100px;
     bottom: -35px;
   }
-
   .vela {
     transform: scale(0.65);
     bottom: 74px;
     left: 160px;
   }
-
   .llama {
     bottom: 138px;
     left: 157px;
   }
+  .carta { transform: scale(0.7); }
+}
 
-  .carta {
-    transform: scale(0.7);
+/* ===========================================================
+   Ajuste fino para 401–480px (teléfonos comunes)
+   =========================================================== */
+@media (min-width: 401px) and (max-width: 480px){
+  .happy-birthday{
+    font-size: clamp(20px, 6.5vw, 40px);
+    transform: translate(-50%, -115%);
   }
 }
