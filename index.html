@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <title>Feliz Cumpleaños Princesita❤️</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="mobile.css"
+      media="only screen and (max-width: 768px)"
+    />
+  </head>
+
+
+  <body>
+    <!--Confeti Atras-->
+    <canvas id="canvas1"></canvas>
+    <div class="contenedor">
+      <!-- PortaRetrato -->
+      <div class="portaretrato-torta-caja">
+        <div class="portaretrato">
+          <div class="marco">
+            <img src="/recursos/cumpleañero.jpeg" alt="Foto" />
+          </div>
+          <div class="soporte-marco"></div>
+        </div>
+
+        <!--Torta De Cumpleaños-->
+        <div class="torta-cumpleaños">
+          <div class="torta">
+            <div class="chocolate"></div>
+          </div>
+          <div class="vela"></div>
+          <div class="llama"></div>
+        </div>
+
+        <!--Caja De Regalo-->
+        <div class="caja-wrapper">
+          <div class="caja">
+            <div class="cinta-de-regalo">
+              <div class="cinta-de-regalo-izquierda"></div>
+              <div class="cinta-de-regalo-derecha"></div>
+              <div class="cinta-de-regalo-centro"></div>
+            </div>
+            <div class="regalos">
+              <div class="regalo-sombra"></div>
+            </div>
+            <div class="regalo"></div>
+            <div class="icono-estrella estrella1"></div>
+            <div class="icono-estrella estrella2"></div>
+            <div class="icono-estrella estrella3"></div>
+            <div class="icono-estrella estrella4"></div>
+            <div class="icono-estrella estrella5"></div>
+          </div>
+        </div>
+
+        <!--Mensaje Feliz Cumpleaños-->
+        <div class="happy-birthday">Feliz cumpleaños mi amor</div>
+      </div>
+
+      <!--Mesa-->
+      <div class="soporte"></div>
+    </div>
+
+    <!-- Carta Modal -->
+    <div class="modal-carta" id="modalCarta">
+      <div class="contenido-carta">
+        <div class="carta">
+          <h2>Querida Lian❤️</h2>
+          <p>
+            Mi pequeñita hermosa En este día tan especial quiero desearte un feliz cumpleaños lleno
+            de alegría, risas y momentos inolvidables. este año me encargare de llenarte de mucha felicidad y llenarselo con el doble de aventuras🎂✨ y momentos perfectos
+            quiero que sepas que eres la luz de mi vida y cada día a tu lado es un regalo maravilloso. Que este nuevo año de vida te traiga mucho exito, que el amor amor se lo voy a dar yo 🥰 y todas las
+            Oportunidades que mereces. Te amo con todo mi corazón y estoy agradecido por cada instante que compartimos juntos. ¡Feliz cumpleaños, mi vida! siga intentando y dando lo mejor de todos sus proyectos🎉🎁
+            Se comera el mundo y eso lo se, porque es una mujer fuerte, inteligente y hermosa por dentro y por fuera.
+            Te amo mucho mi amor❤️ es capaz de lograr cualquier cosita que se proponga, nunca olvides eso. yo lo he visto en persona, y lo seguire viendo cada añito que pase a tu lado. Toda la vida, nunca faltara mi apoyo incondicional.
+            eres la persona que me hace ser mejor cada dia, y quiero seguir creciendo a tu lado. disfrute su dia mi vida, pasela bien con sus amigos, su familia, y nuestros hijitos peludos. espero verla pronto, y entregarle cada uno de sus regalitos
+            , ya sabe mi amor, pasela muy bieen te amooo🥰🎊🎆
+          </p>
+          <p class="firma">Con cariño,<br />Siempre Tuyo -Cristian</p>
+        </div>
+      </div>
+    </div>
+
+    <!--Confeti Delante-->
+    <canvas id="canvas2"></canvas>
+
+    <!--Todo Oscuro-->
+    <audio id="soplido" src="/proyectos/Feliz Cumpleaños/recursos/soplar1.mp3" preload="auto"></audio>
+    <audio
+      id="cancion"
+      src="/proyectos/Feliz Cumpleaños/recursos/cancion.mp3"
+      preload="auto"
+    ></audio>
+    <div class="overlay"></div>
+
+    <script src="Confeti.js"></script>
+    <script src="Confeti2.js"></script>
+    <script src="Sorpresa.js"></script>
+  </body>
+</html>
+
+
